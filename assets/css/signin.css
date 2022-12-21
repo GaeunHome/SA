@@ -1,0 +1,16 @@
+body{
+    width: 100%;
+    background-image: url("../img/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signin_container{
+    padding: 0px 30px 0px 30px;
+}
+.signin_container h1{
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+}
