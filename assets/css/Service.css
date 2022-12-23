@@ -9,11 +9,14 @@
 .container .row{
     margin-top: 20px;
 }
-.container h1{
+header{
+    margin-top: 10px;
     text-align: center;
+    font-size: 48px;
+    font-weight: bolder;
 }
 .container .col-md-4{
-    padding: 10px 10px 10px 10px;
+    padding: 5px 10px 10px 10px;
 }
 .container .buyit{
     background-color: #FFFFFF;
