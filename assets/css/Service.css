@@ -1,36 +1,32 @@
-.wish{
-    position: relative;
-    margin: 20px;
-    text-decoration:none;
-    left: 300px;
-   
+/* nav */
+.head{
+    width: 250px;
+    border-radius: 50%;
 }
-
-h1{
-    color: darkblue;
-    padding: 20px;
-    position: relative;
-    left: 200px;
+.navbar-brand img{
+    width: 20px;
 }
-h2{
-    position: relative;
-    left: 30px;
+.container .row{
+    margin-top: 20px;
 }
-
-.h1rd{
-    position: relative;
-    top: 50px;
-    left: 300px;
+.container h1{
+    text-align: center;
 }
-
-.card1{
-    position: relative;
-    left: 350px;
-    top: 80px;
+.container .col-md-4{
+    padding: 10px 10px 10px 10px;
 }
-
-.card2{
-    position: relative;
-    left: 740px;
-    top: -140px;
+.container .buyit{
+    background-color: #FFFFFF;
+}
+.buy_content{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.buy_content h4{
+    padding-top: 10px;
+}
+.buy_content p{
+    color: orange;
+    padding-bottom: 10px;
 }
