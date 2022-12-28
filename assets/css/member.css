@@ -1,13 +1,6 @@
 /* Google Fonts Import Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-/* nav */
-.head{
-    width: 250px;
-    border-radius: 50%;
-}
-.navbar-brand img{
-    width: 20px;
-}
+
 .container .row{
     margin-top: 20px;
     text-align: center;
