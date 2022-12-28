@@ -24,7 +24,9 @@ def vip(request):
     if 'account' in request.session:
         account = request.session['account']
         unit = member.objects.get(account=account)
-    return render(request, 'member.html', locals())
+        return render(request, 'member.html', locals())
+    else:
+        return HttpResponseRedirect( '/signin/')
 
 def signup(request):
     if request.method == 'GET':
