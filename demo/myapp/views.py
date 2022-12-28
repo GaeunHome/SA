@@ -38,7 +38,7 @@ def signup(request):
         uname = request.POST.get('name')
         if upassword!=upassword2:
             return render(request, 'signup.html', locals())
-        unit = member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname)
-        return HttpResponse("資料已被填入") 
+        member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname)
+    return HttpResponse("資料已被填入") 
         
 
