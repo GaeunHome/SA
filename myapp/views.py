@@ -33,7 +33,6 @@ def signup(request):
         return render(request, 'signup.html')
     elif request.method == 'POST':
         uaccount = request.POST.get('account')
-        
         upassword = request.POST.get('password')
         upassword2 = request.POST.get('password2')
         uphone = request.POST.get('phone')
