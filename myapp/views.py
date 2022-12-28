@@ -42,4 +42,5 @@ def signup(request):
         member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname)
         return HttpResponse("資料已被填入") 
         
-
+def passbook(request):
+    return render(request, 'passbook.html')
