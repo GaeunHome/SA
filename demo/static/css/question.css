@@ -1,0 +1,23 @@
+/* nav */
+.head{
+    width: 250px;
+    border-radius: 50%;
+}
+.navbar-brand img{
+    width: 20px;
+}
+.mb-3{
+    width: 80%;
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.btn{
+    margin-left: 10%;
+}
+.form-label{
+    font-size: 20px;
+}
+figure{
+    padding-top: 25px;
+}
