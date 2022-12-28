@@ -31,6 +31,7 @@ def signup(request):
         return render(request, 'signup.html')
     elif request.method == 'POST':
         uaccount = request.POST.get('account')
+        
         upassword = request.POST.get('password')
         upassword2 = request.POST.get('password2')
         uphone = request.POST.get('phone')
@@ -39,6 +40,6 @@ def signup(request):
         if upassword!=upassword2:
             return render(request, 'signup.html', locals())
         member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname)
-    return HttpResponse("資料已被填入") 
+        return HttpResponse("資料已被填入") 
         
 
