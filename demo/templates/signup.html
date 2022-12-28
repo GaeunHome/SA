@@ -14,32 +14,33 @@
 <body style="background-color: beige;">
   <div class="container signin_container">
     <h1>台灣碳治郎</h1>
-    <form action="" method="post">
+    <form action="" method="POST">
+      {% csrf_token %}
       <div class="row align-items-center">
         <div class="col-md-12 sign">
           <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">請輸入身分證字號</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="請輸入身分證字號">
+            <input type="text" naem="account" class="form-control" id="formGroupExampleInput" placeholder="請輸入身分證字號">
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">請輸入密碼</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="請輸入密碼">
+            <input type="text" name="password" class="form-control" id="formGroupExampleInput2" placeholder="請輸入密碼">
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">請再次輸入密碼</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="請再次輸入密碼">
+            <input type="text" name="password2" class="form-control" id="formGroupExampleInput2" placeholder="請再次輸入密碼">
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">請輸入手機號碼</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="請輸入手機號碼">
+            <input type="text" name="phone" class="form-control" id="formGroupExampleInput2" placeholder="請輸入手機號碼">
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">請輸入電子信箱</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="請輸入電子信箱">
+            <input type="text" name="email" class="form-control" id="formGroupExampleInput2" placeholder="請輸入電子信箱">
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">請輸入暱稱</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="請輸入暱稱">
+            <input type="text" name="name" class="form-control" id="formGroupExampleInput2" placeholder="請輸入暱稱">
           </div>
           <div class="d-grid gap-2 m-auto w-auto" style="padding-top: 10px;">
             <button type="submit" class="btn btn-success">註冊</button>

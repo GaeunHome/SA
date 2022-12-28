@@ -25,3 +25,20 @@ def vip(request):
         account = request.session['account']
         unit = member.objects.get(account=account)
     return render(request, 'member.html', locals())
+
+def signup(request):
+    if request.method == 'GET':
+        return render(request, 'signup.html')
+    elif request.method == 'POST':
+        uaccount = request.POST.get('account')
+        upassword = request.POST.get('password')
+        upassword2 = request.POST.get('password2')
+        uphone = request.POST.get('phone')
+        uemail = request.POST.get('email')
+        uname = request.POST.get('name')
+        if upassword!=upassword2:
+            return render(request, 'signup.html', locals())
+        unit = member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname)
+        return HttpResponse("資料已被填入") 
+        
+
