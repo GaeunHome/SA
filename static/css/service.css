@@ -1,19 +1,11 @@
-/* nav */
-.head{
-    width: 250px;
-    border-radius: 50%;
-}
-.navbar-brand img{
-    width: 20px;
-}
-.container .row{
-    margin-top: 20px;
-}
 header{
     margin-top: 10px;
     text-align: center;
     font-size: 48px;
     font-weight: bolder;
+}
+.container .row{
+    margin-top: 20px;
 }
 .container .col-md-4{
     padding: 5px 10px 10px 10px;
