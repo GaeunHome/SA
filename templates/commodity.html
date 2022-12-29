@@ -63,15 +63,15 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-6" style="text-align: center;">
-        <h1>{{ products.productname }}</h1>
-        <p>{{ products.productpoint }} 點／時</p>
-        <form action="prizecode.html" method="POST">
+      <form action="prizecode.html" method="POST">
+        <div class="col-sm-12" style="text-align: center; padding-top: 20px;">
+          <h1>{{ products.productname }}</h1>
+          <p>{{ products.productpoint }} 點／時</p>
           <span>數量：</span>
           <input id="number" type="number" value="1" min="1">
           <button type="submit">兌換</button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
     <div class="row">
       <div class="col-md-12">
