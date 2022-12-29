@@ -100,7 +100,7 @@ def report(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
-
+# 登出
 def signout(request):
     del request.session['account']
     messages.success(request, "您已登出")
