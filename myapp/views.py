@@ -64,7 +64,7 @@ def report(request):
             return render(request, 'question.html')
         elif request.method == 'POST':
             content = request.POST.get('content')
-            question.objects.create(account=account, question=content)
+            question.objects.create(account2=account, question=content)
             messages.success(request, "已將您的問題回報了！會儘速解決您的問題")
             return render(request, 'question.html', locals())
     else:
