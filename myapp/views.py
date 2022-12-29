@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
-from myapp.models import member, question
+from myapp.models import member, question, transaction
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
@@ -55,7 +55,14 @@ def signup(request):
         return HttpResponseRedirect('/signin/')
 
 def passbook(request):
-    return render(request, 'passbook.html')
+    if 'account' in request.session:
+        account = request.session['account']
+        unit = member.objects.get(account=account)
+        passbook = transaction.objects.filter(MEMID=account)
+        return render(request, 'passbook.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
 
 def report(request):
     if 'account' in request.session:
@@ -64,7 +71,7 @@ def report(request):
             return render(request, 'question.html')
         elif request.method == 'POST':
             content = request.POST.get('content')
-            question.objects.create(account2=account, question=content)
+            question.objects.create(account=account, question=content)
             messages.success(request, "已將您的問題回報了！會儘速解決您的問題")
             return render(request, 'question.html', locals())
     else:

@@ -16,3 +16,13 @@ class question(models.Model):
     question = models.CharField(max_length=500)
     def __str__(self):
         return self.account
+
+class transaction(models.Model):
+    ORDID = models.CharField(primary_key=True, max_length=20, null=False)
+    MEMID = models.CharField(max_length=20, null=False)
+    CDATE = models.DateTimeField()
+    GPOINT = models.IntegerField()
+    AMOUNT = models.IntegerField()
+    APPID = models.IntegerField() # 智慧喜組別
+    def __str__(self):
+        return self.MEMID

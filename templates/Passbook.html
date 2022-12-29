@@ -32,15 +32,15 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="redemption.html">碳權點數商城</a></li>
-              <li><a class="dropdown-item" href="../passbook">碳權存摺</a></li>
+              <li><a class="dropdown-item" href="/passbook/">碳權存摺</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="question.html">問題回報</a>
+            <a class="nav-link" href="/question/">問題回報</a>
           </li>
         </ul>
         <form class="text-end">
-          <a href="../signin/"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+          <a href=""><button type="button" class="btn btn-outline-light me-2">Login</button></a>
         </form>
       </div>
     </div>
@@ -48,7 +48,7 @@
   <div class="container">
     <div class="row">
       <div class="col align-self-center">
-        <p class="point-text">您的碳制郎點數：10000</p>
+        <p class="point-text">您的碳制郎點數：{{ unit.GPOINT }}</p>
       </div>
     </div>
   </div>
@@ -67,20 +67,15 @@
         </tr>
       </thead>
       <tbody>
+        {% for info in passbook %}
         <tr>
-          <th scope="row">2022/12/23</th>
-          <td>AI智慧喜點數</td>
-          <td>50</td>
+          <th scope="row">{{ info.CDATE }}</th>
+          <td>初始點數</td>
+          <td>{{ info.GPOINT }}</td>
           <td></td>
-          <td>10500</td>
+          <td>{{ unit.GPOINT }}</td>
         </tr>
-        <tr>
-          <th scope="row">2022/12/23</th>
-          <td>烤肉</td>
-          <td></td>
-          <td>500</td>
-          <td>10000</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
