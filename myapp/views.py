@@ -53,5 +53,12 @@ def signup(request):
         messages.success(request, "恭喜！註冊成功")
         return HttpResponseRedirect('/signin/')
         
+def signout(request):
+    if request.method == 'GET':
+        return HttpResponseRedirect('/signin/')
+    elif request.method == 'POST':
+        messages.success(request, "您已登出")
+        return HttpResponseRedirect('/signin/')
+
 def passbook(request):
     return render(request, 'passbook.html')
