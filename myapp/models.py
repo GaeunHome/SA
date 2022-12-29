@@ -10,3 +10,9 @@ class member(models.Model):
     GPOINT = models.IntegerField()
     def __str__(self):
         return self.account
+
+class question(models.Model):
+    account = models.CharField(max_length=20)
+    question = models.CharField(max_length=500)
+    def __str__(self):
+        return self.account

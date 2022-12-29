@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
-from myapp.models import member
+from myapp.models import member, question
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
@@ -30,7 +30,8 @@ def vip(request):
         unit = member.objects.get(account=account)
         return render(request, 'member.html', locals())
     else:
-        return HttpResponseRedirect( '/signin/')
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
 # 註冊已完成優化
 def signup(request):
     if request.method == 'GET':
@@ -52,13 +53,20 @@ def signup(request):
         member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname, GPOINT=0)
         messages.success(request, "恭喜！註冊成功")
         return HttpResponseRedirect('/signin/')
-        
-def signout(request):
-    if request.method == 'GET':
-        return HttpResponseRedirect('/signin/')
-    elif request.method == 'POST':
-        messages.success(request, "您已登出")
-        return HttpResponseRedirect('/signin/')
 
 def passbook(request):
     return render(request, 'passbook.html')
+
+def report(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        if request.method == 'GET':
+            return render(request, 'question.html')
+        elif request.method == 'POST':
+            content = request.POST.get('content')
+            question.objects.create(account=account, question=content)
+            messages.success(request, "已將您的問題回報了！會儘速解決您的問題")
+            return render(request, 'question.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
