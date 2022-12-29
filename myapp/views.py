@@ -49,7 +49,7 @@ def signup(request):
         if upassword!=upassword2:
             messages.error(request, "兩次密碼不正確")
             return render(request, 'signup.html', locals())
-        member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname)
+        member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname, GPOINT=0)
         messages.success(request, "恭喜！註冊成功")
         return HttpResponseRedirect('/signin/')
         
