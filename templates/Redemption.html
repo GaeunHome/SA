@@ -47,17 +47,18 @@
   <header>⛽️&ensp;行</header>
   <div class="container">
     <div class="row">
-      {% for productID in products %}
+      {% for info in products %}
       <div class="col-md-4">
-        <a href="">
+        <form>
           <div class="buyit">
             <img src="{% static 'img/Luda.jpeg' %}" class="img-fluid mx-auto d-block" alt="">
             <div class="buy_content">
-              <h4>{{ productID.productname }}</h4>
-              <p>GP：{{ productID.productpoint }}</p>
+              <h4>{{ info.productname }}</h4>
+              <p>GP：{{ info.productpoint }}</p>
+              <button class="btn btn-outline-danger" type="submit" name="go" value="{{info.productID}}">前往選購</button>
             </div>
           </div>
-        </a>
+        </form>
       </div>
       {% endfor %}
     </div>

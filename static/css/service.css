@@ -27,5 +27,7 @@ header{
 }
 .buy_content p{
     color: orange;
-    padding-bottom: 10px;
+}
+.buy_content .btn{
+    margin-bottom: 15px;
 }
