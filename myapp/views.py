@@ -79,6 +79,7 @@ def products(request):
     elif request.method == 'POST':    
         if 'account' in request.session:
             account = request.session['account']
+            mem = member.objects.get(account=account)
             productnum = request.POST.get('go')
             products = product.objects.get(productID=productnum)
             return render(request, 'commodity.html', locals())

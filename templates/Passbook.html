@@ -15,7 +15,7 @@
 <body style="background-color: beige;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}" style="width: 20px;">&ensp;台灣碳治郎</a>
+      <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}">&ensp;台灣碳治郎</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="member.html">個人資訊</a>
+            <a class="nav-link active" aria-current="page" href="/member/">個人資訊</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -31,7 +31,7 @@
               碳權點數
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="redemption.html">碳權點數商城</a></li>
+              <li><a class="dropdown-item" href="/productlist/">碳權點數商城</a></li>
               <li><a class="dropdown-item" href="/passbook/">碳權存摺</a></li>
             </ul>
           </li>
@@ -40,7 +40,7 @@
           </li>
         </ul>
         <form class="text-end">
-          <a href=""><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+          <a href="#"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
         </form>
       </div>
     </div>
