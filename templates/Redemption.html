@@ -14,7 +14,7 @@
 <body style="background-color: beige;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="assets/img/logo.png">&ensp;台灣碳治郎</a>
+      <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}">&ensp;台灣碳治郎</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="member.html">個人資訊</a>
+            <a class="nav-link active" aria-current="page" href="/member/">個人資訊</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -30,8 +30,8 @@
               碳權點數
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="redemption.html">碳權點數商城</a></li>
-              <li><a class="dropdown-item" href="passbook.html">碳權存摺</a></li>
+              <li><a class="dropdown-item" href="">碳權點數商城</a></li>
+              <li><a class="dropdown-item" href="/passbook/">碳權存摺</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -47,44 +47,19 @@
   <header>⛽️&ensp;行</header>
   <div class="container">
     <div class="row">
+      {% for productID in products %}
       <div class="col-md-4">
-        <div class="buyit">
-          <img src="assets/img/luda.jpeg" class="img-fluid mx-auto d-block" alt="">
-          <div class="buy_content">
-            <h4>駕駛F16</h4>
-            <p>1000000000000點</p>
+        <a href="">
+          <div class="buyit">
+            <img src="{% static 'img/Luda.jpeg' %}" class="img-fluid mx-auto d-block" alt="">
+            <div class="buy_content">
+              <h4>{{ productID.productname }}</h4>
+              <p>GP：{{ productID.productpoint }}</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
-      <div class="col-md-4">
-        <div class="buyit">
-          <img src="assets/img/luda.jpeg" class="img-fluid mx-auto d-block" alt="">
-          <div class="buy_content">
-            <h4>駕駛瑪莎拉蒂</h4>
-            <p>10000000點</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="buyit">
-          <img src="assets/img/luda.jpeg" class="img-fluid mx-auto d-block" alt="">
-          <div class="buy_content">
-            <h4>駕駛瑪莎拉蒂</h4>
-            <p>10000000點</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="buyit">
-          <img src="assets/img/luda.jpeg" class="img-fluid mx-auto d-block" alt="">
-          <div class="buy_content">
-            <h4>駕駛瑪莎拉蒂</h4>
-            <p>10000000點</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from myapp.models import member, question, transaction
+from myapp.models import member, question, transaction, product
 
 class userAdmin(admin.ModelAdmin):
     list_display=('account','password','phone','email','name','GPOINT')
@@ -13,3 +13,7 @@ admin.site.register(question, questionAdmin)
 class transactionAdmin(admin.ModelAdmin):
     list_display=('ORDID','MEMO','MEMID','CDATE','GPOINT','AMOUNT','APPID')
 admin.site.register(transaction, transactionAdmin)
+
+class productAdmin(admin.ModelAdmin):
+    list_display=('productID','productname','productpoint')
+admin.site.register(product, productAdmin)

@@ -28,3 +28,10 @@ class transaction(models.Model):
     APPID = models.IntegerField() # 智慧喜組別
     def __str__(self):
         return self.MEMID
+
+class product(models.Model):
+    productID = models.AutoField(primary_key=True)
+    productname = models.CharField(max_length=20, null=False)
+    productpoint = models.IntegerField()
+    def __str__(self):
+        return self.productname

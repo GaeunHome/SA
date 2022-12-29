@@ -10,6 +10,9 @@ header{
 .container .col-md-4{
     padding: 5px 10px 10px 10px;
 }
+.col-md-4 a{
+    text-decoration: none;
+}
 .container .buyit{
     background-color: #FFFFFF;
 }
@@ -19,6 +22,7 @@ header{
     margin-right: 5%;
 }
 .buy_content h4{
+    color: black;
     padding-top: 10px;
 }
 .buy_content p{

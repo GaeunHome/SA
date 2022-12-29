@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
-from myapp.models import member, question, transaction
+from myapp.models import member, question, transaction, product
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
@@ -60,6 +60,15 @@ def passbook(request):
         unit = member.objects.get(account=account)
         passbook = transaction.objects.filter(MEMID=account)
         return render(request, 'passbook.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
+
+def productlist(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        products = product.objects.all()
+        return render(request, 'Redemption.html', locals())
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
