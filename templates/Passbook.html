@@ -70,10 +70,10 @@
         {% for info in passbook %}
         <tr>
           <th scope="row">{{ info.CDATE }}</th>
-          <td>初始點數</td>
+          <td>{{ info.MEMO }}</td>
           <td>{{ info.GPOINT }}</td>
           <td></td>
-          <td>{{ unit.GPOINT }}</td>
+          <td>{{ info.BALANCE }}</td>
         </tr>
         {% endfor %}
       </tbody>

@@ -11,5 +11,5 @@ class questionAdmin(admin.ModelAdmin):
 admin.site.register(question, questionAdmin)
 
 class transactionAdmin(admin.ModelAdmin):
-    list_display=('ORDID','MEMID','CDATE','GPOINT','AMOUNT','APPID')
+    list_display=('ORDID','MEMO','MEMID','CDATE','GPOINT','AMOUNT','APPID')
 admin.site.register(transaction, transactionAdmin)

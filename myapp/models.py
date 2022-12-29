@@ -19,9 +19,11 @@ class question(models.Model):
 
 class transaction(models.Model):
     ORDID = models.CharField(primary_key=True, max_length=20, null=False)
+    MEMO = models.CharField(max_length=20)
     MEMID = models.CharField(max_length=20, null=False)
     CDATE = models.DateTimeField()
     GPOINT = models.IntegerField()
+    BALANCE = models.IntegerField() # 此欄位要記得從member的GPOINT做更新
     AMOUNT = models.IntegerField()
     APPID = models.IntegerField() # 智慧喜組別
     def __str__(self):
