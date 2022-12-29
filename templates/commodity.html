@@ -15,7 +15,7 @@
 <body style="background-color: beige;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="assets/img/logo.png">&ensp;台灣碳治郎</a>
+      <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}">&ensp;台灣碳治郎</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -75,9 +75,9 @@
         </div>
       </div>
       <div class="col-sm-12 col-md-6" style="text-align: center;">
-        <h1>瑪莎拉蒂</h1>
-        <p>10000000 點／時</p>
-        <form action="prizecode.html" method="post">
+        <h1>{{ products.productname }}</h1>
+        <p>{{ products.productpoint }} 點／時</p>
+        <form action="prizecode.html" method="POST">
           <span>數量：</span>
           <input id="number" type="number" value="1" min="1">
           <button type="submit">兌換</button>

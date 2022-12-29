@@ -73,6 +73,19 @@ def productlist(request):
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
 
+def products(request):
+    if request.method == 'GET':
+        return render(request, 'Redemption.html')
+    elif request.method == 'POST':    
+        if 'account' in request.session:
+            account = request.session['account']
+            productnum = request.POST.get('go')
+            products = product.objects.get(productID=productnum)
+            return render(request, 'commodity.html', locals())
+        else:
+            messages.error(request, "您還未登入！！")
+            return HttpResponseRedirect('/signin/')
+
 def report(request):
     if 'account' in request.session:
         account = request.session['account']

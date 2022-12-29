@@ -49,9 +49,10 @@
     <div class="row">
       {% for info in products %}
       <div class="col-md-4">
-        <form>
+        <form action="/products/" method="POST">
+          {% csrf_token %}
           <div class="buyit">
-            <img src="{% static 'img/Luda.jpeg' %}" class="img-fluid mx-auto d-block" alt="">
+            <img src="{% static 'img/{{ info.productimage1 }}' %}" class="img-fluid mx-auto d-block" alt="">
             <div class="buy_content">
               <h4>{{ info.productname }}</h4>
               <p>GP：{{ info.productpoint }}</p>

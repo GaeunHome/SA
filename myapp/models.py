@@ -32,6 +32,8 @@ class transaction(models.Model):
 class product(models.Model):
     productID = models.AutoField(primary_key=True)
     productname = models.CharField(max_length=20, null=False)
+    productimage1 = models.CharField(max_length=50, null=False)
+    productimage2 = models.CharField(max_length=50, null=False)
     productpoint = models.IntegerField()
     def __str__(self):
         return self.productname
