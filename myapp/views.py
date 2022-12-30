@@ -119,6 +119,7 @@ def buy(request):
             total = info.GPOINT - pro.productpoint*number
             member.objects.update(GPOINT=total)
             transaction.objects.create(ORDID=pro.productID, MEMO=pro.productname+"兌換", MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, AMOUNT=0, BALANCE=total, APPID=10)
+            messages.success(request, "兌換成功！！！！")
             return HttpResponseRedirect('/productlist/')
     else:
         messages.error(request, "您還未登入！！")
