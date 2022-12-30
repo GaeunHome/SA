@@ -19,7 +19,7 @@ class question(models.Model):
 
 class transaction(models.Model):
     ORDID = models.CharField(primary_key=True, max_length=20, null=False)
-    MEMO = models.CharField(max_length=20)
+    MEMO = models.CharField(max_length=20, null=True)
     MEMID = models.CharField(max_length=20, null=False)
     CDATE = models.DateTimeField()
     GPOINT = models.IntegerField()
