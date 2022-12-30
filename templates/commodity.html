@@ -63,13 +63,14 @@
           </div>
         </div>
       </div>
-      <form action="prizecode.html" method="POST">
+      <form action="/buy/" method="POST">
+        {% csrf_token %}
         <div class="col-sm-12" style="text-align: center; padding-top: 20px;">
           <h1>{{ products.productname }}</h1>
           <p>{{ products.productpoint }} 點／時</p>
           <span>數量：</span>
-          <input id="number" type="number" value="1" min="1">
-          <button type="submit">兌換</button>
+          <input id="number" name="number" type="number" value='1' min='1'>
+          <button name="pro" value="{{ products.productID }}" class="btn btn-light" type="submit">兌換</button>
         </div>
       </form>
     </div>

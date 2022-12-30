@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
+from django.utils import timezone
 from myapp.models import member, question, transaction, product
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -105,3 +106,20 @@ def signout(request):
     del request.session['account']
     messages.success(request, "您已登出")
     return HttpResponseRedirect('/signin/')
+
+def buy(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        if request.method == 'GET':
+            return render(request, 'question.html')
+        elif request.method == 'POST':
+            pro = product.objects.get(productID=request.POST.get('pro'))
+            info = member.objects.get(account=account)
+            number = int(request.POST.get('number'))
+            total = info.GPOINT - pro.productpoint*number
+            member.objects.update(GPOINT=total)
+            transaction.objects.create(ORDID=pro.productID, MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, AMOUNT=0, BALANCE=total, APPID=10)
+            return HttpResponseRedirect('/productlist/')
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')

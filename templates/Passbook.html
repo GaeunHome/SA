@@ -71,8 +71,13 @@
         <tr>
           <th scope="row">{{ info.CDATE }}</th>
           <td>{{ info.MEMO }}</td>
-          <td>{{ info.GPOINT }}</td>
-          <td></td>
+          {% if info.APPID != 10 %}
+            <td>{{ info.GPOINT }}</td>
+            <td></td>
+          {% else %}
+            <td></td>
+            <td>{{ info.GPOINT }}</td>
+          {% endif %}
           <td>{{ info.BALANCE }}</td>
         </tr>
         {% endfor %}
