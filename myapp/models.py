@@ -18,7 +18,8 @@ class question(models.Model):
         return self.account
 
 class transaction(models.Model):
-    ORDID = models.CharField(primary_key=True, max_length=20, null=False)
+    ORDID = models.AutoField(primary_key=True, max_length=20, null=False)
+    PROID = models.CharField(max_length=20, null=True)
     MEMO = models.CharField(max_length=20, null=True)
     MEMID = models.CharField(max_length=20, null=False)
     CDATE = models.DateTimeField()

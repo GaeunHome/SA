@@ -111,15 +111,14 @@ def buy(request):
     if 'account' in request.session:
         account = request.session['account']
         if request.method == 'GET':
-            return render(request, 'question.html')
+            return render(request, 'Redemption.html.html')
         elif request.method == 'POST':
             pro = product.objects.get(productID=request.POST.get('pro'))
             info = member.objects.get(account=account)
             number = int(request.POST.get('number'))
             total = info.GPOINT - pro.productpoint*number
             member.objects.update(GPOINT=total)
-            transaction.objects.create(ORDID=pro.productID, MEMO=pro.productname+"兌換", MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, AMOUNT=0, BALANCE=total, APPID=10)
-            messages.success(request, "兌換成功！！！！")
+            transaction.objects.create(PROID=pro.productID, MEMO=pro.productname+"兌換", MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, AMOUNT=0, BALANCE=total, APPID=10)
             return HttpResponseRedirect('/productlist/')
     else:
         messages.error(request, "您還未登入！！")
@@ -127,3 +126,14 @@ def buy(request):
 
 def rank(request):
     return render(request, 'leaderboard.html')
+
+def qrcode(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        qr = transaction.objects.filter(MEMID=account)
+        qr.PROID
+        # products = product.objects.get(productID)
+        return render(request, 'qrcode.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
