@@ -60,6 +60,15 @@
     object-fit: cover;
 }
 
+.aaa
+{   
+    text-align: center;
+    font-weight: 1200;
+    color: black;
+    line-height: 1.2em;
+
+}
+
 .content .details
 {   
     margin-top: 20%;
