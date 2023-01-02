@@ -24,15 +24,6 @@ def signin(request):
         except ObjectDoesNotExist:
             messages.error(request, "帳號不存在")
             return render(request, 'signin.html', locals())
-
-def vip(request):
-    if 'account' in request.session:
-        account = request.session['account']
-        unit = member.objects.get(account=account)
-        return render(request, 'member.html', locals())
-    else:
-        messages.error(request, "您還未登入！！")
-        return HttpResponseRedirect('/signin/')
 # 註冊已完成優化
 def signup(request):
     if request.method == 'GET':
@@ -54,7 +45,21 @@ def signup(request):
         member.objects.create(account=uaccount, password=upassword, phone=uphone, email=uemail, name=uname, GPOINT=0)
         messages.success(request, "恭喜！註冊成功")
         return HttpResponseRedirect('/signin/')
-
+# 登出
+def signout(request):
+    del request.session['account']
+    messages.success(request, "您已登出")
+    return HttpResponseRedirect('/signin/')
+# 會員介面
+def vip(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        unit = member.objects.get(account=account)
+        return render(request, 'member.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
+# 碳權存摺
 def passbook(request):
     if 'account' in request.session:
         account = request.session['account']
@@ -64,7 +69,7 @@ def passbook(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
-
+# 碳權點數商城
 def productlist(request):
     if 'account' in request.session:
         account = request.session['account']
@@ -73,7 +78,7 @@ def productlist(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
-
+# 碳權點數商品
 def products(request):
     if request.method == 'GET':
         return render(request, 'Redemption.html')
@@ -87,7 +92,7 @@ def products(request):
         else:
             messages.error(request, "您還未登入！！")
             return HttpResponseRedirect('/signin/')
-
+# 問題回報
 def report(request):
     if 'account' in request.session:
         account = request.session['account']
@@ -101,12 +106,7 @@ def report(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
-# 登出
-def signout(request):
-    del request.session['account']
-    messages.success(request, "您已登出")
-    return HttpResponseRedirect('/signin/')
-
+# 購買
 def buy(request):
     if 'account' in request.session:
         account = request.session['account']
@@ -117,22 +117,21 @@ def buy(request):
             info = member.objects.get(account=account)
             number = int(request.POST.get('number'))
             total = info.GPOINT - pro.productpoint*number
+            messages.success(request, "兌換完成！")
             member.objects.update(GPOINT=total)
             transaction.objects.create(PROID=pro.productID, MEMO=pro.productname+"兌換", MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, AMOUNT=0, BALANCE=total, APPID=10)
             return HttpResponseRedirect('/productlist/')
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
-
+# 排位
 def rank(request):
     return render(request, 'leaderboard.html')
-
+# 兌換條碼
 def qrcode(request):
     if 'account' in request.session:
         account = request.session['account']
         qr = transaction.objects.filter(MEMID=account)
-        qr.PROID
-        # products = product.objects.get(productID)
         return render(request, 'qrcode.html', locals())
     else:
         messages.error(request, "您還未登入！！")

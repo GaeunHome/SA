@@ -3,6 +3,10 @@
 }
 .row{
     text-align: center;
-    padding: 10px 10px 10px 10px;
-    background-color: aquamarine;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 10px 0px 10px;
+}
+.col-md-4{
+    padding-top: 10px;
 }
