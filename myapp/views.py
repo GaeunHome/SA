@@ -124,3 +124,6 @@ def buy(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
+
+def rank(request):
+    return render(request, 'leaderboard.html')
