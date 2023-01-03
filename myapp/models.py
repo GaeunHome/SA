@@ -18,14 +18,16 @@ class question(models.Model):
         return self.account
 
 class transaction(models.Model):
-    ORDID = models.AutoField(primary_key=True, max_length=20, null=False)
+    ORDID = models.AutoField(primary_key=True, null=False)
     PROID = models.CharField(max_length=20, null=True)
+    PRONAME = models.CharField(max_length=20, null=True)
     MEMO = models.CharField(max_length=20, null=True)
     MEMID = models.CharField(max_length=20, null=False)
     CDATE = models.DateTimeField()
     GPOINT = models.IntegerField()
     BALANCE = models.IntegerField() # 此欄位要記得從member的GPOINT做更新
     AMOUNT = models.IntegerField(null=True)
+    TIME = models.IntegerField()
     APPID = models.IntegerField() # 智慧喜組別
     def __str__(self):
         return self.MEMID

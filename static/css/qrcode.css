@@ -10,3 +10,10 @@
 .col-md-4{
     padding-top: 10px;
 }
+.header{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

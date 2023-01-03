@@ -117,9 +117,12 @@ def buy(request):
             info = member.objects.get(account=account)
             number = int(request.POST.get('number'))
             total = info.GPOINT - pro.productpoint*number
-            messages.success(request, "兌換完成！")
             member.objects.update(GPOINT=total)
-            transaction.objects.create(PROID=pro.productID, MEMO=pro.productname+"兌換", MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, AMOUNT=0, BALANCE=total, APPID=10)
+            transaction.objects.create(
+                PROID=pro.productID, MEMO=pro.productname+"兌換", PRONAME=pro.productname,
+                MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, 
+                AMOUNT=0, TIME=number, BALANCE=total, APPID=10
+            )
             return HttpResponseRedirect('/productlist/')
     else:
         messages.error(request, "您還未登入！！")

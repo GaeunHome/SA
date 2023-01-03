@@ -17,3 +17,4 @@ admin.site.register(transaction, transactionAdmin)
 class productAdmin(admin.ModelAdmin):
     list_display=('productID','productname','productpoint')
 admin.site.register(product, productAdmin)
+
