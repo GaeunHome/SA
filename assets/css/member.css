@@ -6,11 +6,10 @@
 }
 .memberbox{
     position: relative;
-    width: 350px;
+    width: 80%;
     height: 220px;
     background: #CEFFCE;
     border-radius: 20px;
-    
 }
 
 .imgbox{
@@ -59,4 +58,40 @@
 .barcode{
     margin-top: 40px;
     text-align: center;
+}
+
+.function-set{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+}
+.functionbox{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: #CEFFCE;
+    border-radius: 20px;   
+}
+.function-content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.functionbox .function-content .function-details{
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+}
+.functionbox .function-content .function-details h2{
+    font-size: 1.25em;
+    font-weight: 600;
+}
+.functionbox .function-content .function-details h2 span{
+    font-size: 0.75em;
+    font-weight: 600;
 }
