@@ -1,0 +1,15 @@
+.set{
+  position: relative;
+  margin-top: 9%;
+  margin-left: 30%;
+  border-top: black 2px;
+  padding: 2px black;
+}
+
+.mem{
+    position: relative;
+    top: 100px;
+    left: 29%;
+    margin: 20px;
+}
+
