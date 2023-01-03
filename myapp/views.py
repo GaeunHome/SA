@@ -6,7 +6,7 @@ from myapp.models import member, question, transaction, product, rankinfo
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
-# 登入已完成優化
+# 登入已完成優化 # 會員編號尚未完成
 def signin(request):
     if request.method == 'GET':
         return render(request, 'signin.html')
@@ -121,9 +121,24 @@ def buy(request):
             transaction.objects.create(
                 PROID=pro.productID, MEMO=pro.productname+"兌換", PRONAME=pro.productname,
                 MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, 
-                AMOUNT=0, TIME=number, BALANCE=total, APPID=10
-            )
+                AMOUNT=0, TIME=number, BALANCE=total, APPID=10)
             return HttpResponseRedirect('/productlist/')
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
+# 修改會員資料
+def modify(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        if request.method == 'GET':
+            return render(request, 'Redemption.html.html')
+        elif request.method == 'POST':
+            # Code #
+            # Code #
+            # Code #
+            # Code #
+            messages.success(request, "修改成功！！")
+            return HttpResponseRedirect('/member/')
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
