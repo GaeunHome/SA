@@ -1,5 +1,5 @@
 from django.contrib import admin
-from myapp.models import member, question, transaction, product
+from myapp.models import member, question, transaction, product, rankinfo
 
 class userAdmin(admin.ModelAdmin):
     list_display=('account','password','phone','email','name','GPOINT')
@@ -15,6 +15,10 @@ class transactionAdmin(admin.ModelAdmin):
 admin.site.register(transaction, transactionAdmin)
 
 class productAdmin(admin.ModelAdmin):
-    list_display=('productID','productname','productpoint')
+    list_display=('productID','productname','productpoint','productlimit')
 admin.site.register(product, productAdmin)
+
+class rankAdmin(admin.ModelAdmin):
+    list_display=('rankname','rankimg')
+admin.site.register(rankinfo, rankAdmin)
 

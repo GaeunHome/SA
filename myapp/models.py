@@ -37,5 +37,12 @@ class product(models.Model):
     productname = models.CharField(max_length=20, null=False)
     productimage1 = models.CharField(max_length=50, null=False)
     productpoint = models.IntegerField()
+    productlimit = models.IntegerField()
     def __str__(self):
         return self.productname
+
+class rankinfo(models.Model):
+    rankname = models.CharField(max_length=20, null=False)
+    rankimg = models.CharField(max_length=20, null=False)
+    def __str__(self):
+        return self.rankname

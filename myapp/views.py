@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.utils import timezone
-from myapp.models import member, question, transaction, product
+from myapp.models import member, question, transaction, product, rankinfo
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
