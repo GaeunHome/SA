@@ -19,6 +19,6 @@ class productAdmin(admin.ModelAdmin):
 admin.site.register(product, productAdmin)
 
 class rankAdmin(admin.ModelAdmin):
-    list_display=('rankname','rankimg')
+    list_display=('rankname','rankimg','rankpoint')
 admin.site.register(rankinfo, rankAdmin)
 

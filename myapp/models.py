@@ -44,5 +44,6 @@ class product(models.Model):
 class rankinfo(models.Model):
     rankname = models.CharField(max_length=20, null=False)
     rankimg = models.CharField(max_length=20, null=False)
+    rankpoint = models.IntegerField()
     def __str__(self):
         return self.rankname
