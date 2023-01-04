@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.utils import timezone
@@ -82,13 +82,17 @@ def productlist(request):
 def products(request):
     if request.method == 'GET':
         return render(request, 'Redemption.html')
-    elif request.method == 'POST':    
+    elif request.method == 'POST':
         if 'account' in request.session:
             account = request.session['account']
             mem = member.objects.get(account=account)
             productnum = request.POST.get('go')
             products = product.objects.get(productID=productnum)
-            return render(request, 'commodity.html', locals())
+            if mem.GPOINT < products.productlimit:
+                messages.error(request, "您的段位未到達，請努力累積碳權點數")
+                return HttpResponseRedirect('/productlist/')
+            else:
+                return render(request, 'commodity.html', locals())
         else:
             messages.error(request, "您還未登入！！")
             return HttpResponseRedirect('/signin/')
@@ -111,7 +115,7 @@ def buy(request):
     if 'account' in request.session:
         account = request.session['account']
         if request.method == 'GET':
-            return render(request, 'Redemption.html')
+            return render(request, 'Redemption.html.html')
         elif request.method == 'POST':
             pro = product.objects.get(productID=request.POST.get('pro'))
             info = member.objects.get(account=account)
