@@ -49,6 +49,7 @@
     <table class="table">
       <thead>
         <tr>
+          <th scope="col">編號</th>
           <th scope="col">兌換商品</th>
           <th scope="col">時數</th>
           <th scope="col">按鈕</th>
@@ -57,6 +58,7 @@
       <tbody>
         {% for info in qr %}
         <tr>
+          <td>1</td>
           <td>{{ info.PRONAME }}</td>
           <td>{{ info.TIME }}小時</td>
           <td><button class="btn btn-success" type="submit">兌換</button></td>
