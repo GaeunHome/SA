@@ -115,7 +115,7 @@ def buy(request):
     if 'account' in request.session:
         account = request.session['account']
         if request.method == 'GET':
-            return render(request, 'Redemption.html.html')
+            return render(request, 'Redemption.html')
         elif request.method == 'POST':
             pro = product.objects.get(productID=request.POST.get('pro'))
             info = member.objects.get(account=account)
@@ -130,31 +130,36 @@ def buy(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
-# 修改會員資料
-def modify(request):
-    if 'account' in request.session:
-        account = request.session['account']
-        if request.method == 'GET':
-            return render(request, 'Redemption.html.html')
-        elif request.method == 'POST':
-            # Code #
-            # Code #
-            # Code #
-            # Code #
-            messages.success(request, "修改成功！！")
-            return HttpResponseRedirect('/member/')
-    else:
-        messages.error(request, "您還未登入！！")
-        return HttpResponseRedirect('/signin/')
-# 排位
-def rank(request):
-    return render(request, 'leaderboard.html')
 # 兌換條碼
 def qrcode(request):
     if 'account' in request.session:
         account = request.session['account']
         qr = transaction.objects.filter(MEMID=account)
         return render(request, 'qrcode.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
+# 修改會員資料介面
+def memberset(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        mem = member.objects.get(account=account)
+        return render(request, 'memberset.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
+# 修改會員資料
+def modify(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        mem = member.objects.get(account=account)
+        if request.method == 'POST':
+            member.objects.update(
+                name=request.POST.get('name'), phone=request.POST.get('phone'),
+                nname=request.POST.get('nname'), email=request.POST.get('email'))
+            messages.success(request, "修改成功")
+            return HttpResponseRedirect('/memberset/')
+
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')

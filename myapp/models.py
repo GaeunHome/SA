@@ -7,6 +7,7 @@ class member(models.Model):
     phone = models.CharField(max_length=10, null=False)
     email = models.EmailField(max_length=50, null=False)
     name = models.CharField(max_length=10, null=False)
+    nname = models.CharField(max_length=20, null=False)
     GPOINT = models.IntegerField()
     def __str__(self):
         return self.account
