@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.utils import timezone
@@ -111,7 +111,7 @@ def buy(request):
     if 'account' in request.session:
         account = request.session['account']
         if request.method == 'GET':
-            return render(request, 'Redemption.html.html')
+            return render(request, 'Redemption.html')
         elif request.method == 'POST':
             pro = product.objects.get(productID=request.POST.get('pro'))
             info = member.objects.get(account=account)

@@ -29,5 +29,4 @@ urlpatterns = [
     path('signout/', signout, name=""),
     path('buy/', buy, name=""),
     path('qrcode/', qrcode, name=""),
-    path('rank/', rank, name=""),
 ]
