@@ -1,0 +1,27 @@
+header{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bolder;
+}
+.container .row{
+    margin-top: 20px;
+}
+.container .col-md-4{
+    padding: 5px 10px 10px 10px;
+}
+.container .buyit{
+    background-color: #FFFFFF;
+}
+.buy_content{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.buy_content h4{
+    padding-top: 10px;
+}
+.buy_content p{
+    color: orange;
+    padding-bottom: 10px;
+}
