@@ -55,6 +55,15 @@ def vip(request):
     if 'account' in request.session:
         account = request.session['account']
         unit = member.objects.get(account=account)
+        rank = rankinfo.objects.all()
+        if unit.GPOINT >= 50000:
+            present = rankinfo.objects.get(rankname="環保大師")
+        elif unit.GPOINT < 50000 & unit.GPOINT >= 20000:
+            present = rankinfo.objects.get(rankname="環保鑽石鬥士")
+        elif unit.GPOINT < 20000 & unit.GPOINT >= 10000:
+            present = rankinfo.objects.get(rankname="環保白金鬥士")
+        else:
+            present = rankinfo.objects.get(rankname="環保黃金鬥士")
         return render(request, 'member.html', locals())
     else:
         messages.error(request, "您還未登入！！")
