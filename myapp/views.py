@@ -163,3 +163,16 @@ def modify(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
+# 排位詳細介面
+def ranklist(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        mem = member.objects.get(account=account)
+        rank = rankinfo.objects.all()
+        if mem.GPOINT > 50000:
+            title = "環保大師"
+            present = rankinfo.objects.get(rankname=title)
+        return render(request, 'leaderboard.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')

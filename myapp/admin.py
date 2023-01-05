@@ -15,10 +15,10 @@ class transactionAdmin(admin.ModelAdmin):
 admin.site.register(transaction, transactionAdmin)
 
 class productAdmin(admin.ModelAdmin):
-    list_display=('productID','productname','productpoint','productlimit')
+    list_display=('productID','productname','productimage1','productpoint','productlimit')
 admin.site.register(product, productAdmin)
 
 class rankAdmin(admin.ModelAdmin):
-    list_display=('rankname','rankimg','rankpoint')
+    list_display=('rankname','rankengname','rankimg','rankpoint')
 admin.site.register(rankinfo, rankAdmin)
 

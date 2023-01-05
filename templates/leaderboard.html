@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>個人資料</title>
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/leaderborad.css' %}">
+    <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -47,73 +47,6 @@
       </div>
     </div>
   </nav>
-  
-  <div class="container" id="container-content">
-    <div class="aaa">
-    <h2>牌位等級介紹</h2>
-    </div>
-    <div class="row row-cols-2">
-      <div class="col">
-        <div class="imgbox">
-          <img src="{% static 'img/master.png' %}">
-          </div>
-      </div>
-
-      <div class="col">
-        <div class="name">
-          <h3>環保大師</h3>
-          <h3>Master</h3>
-          </div>
-            <div class="name1">
-            <span>碳權點數：>500000</span>
-          </div>
-        </div>
-      
-        <div class="col">
-          <div class="imgbox" >
-            <img src="{% static 'img/diamond.png' %}">
-          </div>
-        </div>
-        <div class="col">
-          <div class="name">
-            <h3>環保鑽石鬥士</h3>
-            <h3>Diamond</h3>
-        </div>
-        <div class="name1">
-          <span>碳權點數：300000-500000</span>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="imgbox" >
-          <img src="{% static 'img/platinum.png' %}">
-        </div>
-      </div>
-      <div class="col">
-        <div class="name">
-          <h3>環保白金鬥士</h3>
-          <h3>Platinum</h3>
-        </div>
-        <div class="name1">
-          <span>碳權點數：100000-300000</span>
-        </div>
-      </div>
-      <div class="col">
-        <div class="imgbox" >
-          <img src="{% static 'img/gold.png' %}">
-        </div>
-      </div>
-      <div class="col">
-        <div class="name">
-          <h3>環保黃金鬥士</h3>
-          <h3>Gold</h3>
-        </div>
-          <div class="name1">
-          <span>碳權點數:<100000</span>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="container" id="container-2">
     <div class="aaa">
       <h2>你的牌位</h2>
@@ -121,40 +54,53 @@
     <div class="row row-cols-2" >
       <div class="col">
         <div class="imgbox" id="imgbox-content">
-          <img src="assets/img/master.png">
+          <img src="{% static 'img/luda.jpeg' %}">
         </div> 
         <div class="imgbox-content-1">
-          <h3>侯文家</h3>
+          <h3>{{ mem.name }}</h3>
         </div>
       </div>
       <div class="col">
+        <div class="col">
+          <div class="imgbox" >
+            <img src="/static/img/{{present.rankimg}}">
+          </div>
+        </div>
         <div class="name">
-          <h3>大師</h3>
-          <h3>Master</h3>
+          <h3>{{ present.rankname }}</h3>
+          <h3>{{ present.rankengname }}</h3>
         </div>
           <div class="name1">
-          <span>碳權點數:555555</span>
+          <span>碳權點數：{{ mem.GPOINT }}</span>
         </div>
       </div>
     </div>
   </div>
+  <div class="container" id="container-content">
+    <div class="aaa">
+    <h2>牌位等級介紹</h2>
+    </div>
+    <div class="row row-cols-2">
+      {% for info in rank %}
+      <div class="col">
+        <div class="imgbox">
+          <img src="/static/img/{{info.rankimg}}">
+        </div>
+      </div>
+      <div class="col">
+        <div class="name">
+          <h3>{{ info.rankname }}</h3>
+          <h3>{{ info.rankengname }}</h3>
+        </div>
+            <div class="name1">
+            <span>碳權點數：>500000</span>
+         </div>
+      </div>
+      {% endfor %}
+
+  </div>
    
   <a href="#"><button type="button" class="btn btn-outline-success" id="button-last">點數商店</button></a>  
-    
-    
-
-
-  
-  <script>
-    const randomString = Array.from({length: 7}, () => {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      return chars[Math.floor(Math.random() * chars.length)];
-    }).join("");
-
-    const result = '/' + randomString;
-
-    JsBarcode("#barcode",result, {format: "code128", background: "beige"});
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
