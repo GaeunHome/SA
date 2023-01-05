@@ -169,9 +169,14 @@ def ranklist(request):
         account = request.session['account']
         mem = member.objects.get(account=account)
         rank = rankinfo.objects.all()
-        if mem.GPOINT > 50000:
-            title = "環保大師"
-            present = rankinfo.objects.get(rankname=title)
+        if mem.GPOINT >= 50000:
+            present = rankinfo.objects.get(rankname="環保大師")
+        elif mem.GPOINT < 50000 & mem.GPOINT >= 20000:
+            present = rankinfo.objects.get(rankname="環保鑽石鬥士")
+        elif mem.GPOINT < 20000 & mem.GPOINT >= 10000:
+            present = rankinfo.objects.get(rankname="環保白金鬥士")
+        else:
+            present = rankinfo.objects.get(rankname="環保黃金鬥士")
         return render(request, 'leaderboard.html', locals())
     else:
         messages.error(request, "您還未登入！！")
