@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.utils import timezone
@@ -92,14 +92,6 @@ def daily(request):
     if 'account' in request.session:
         account = request.session['account']
         pro = product.objects.filter(productkind="食")
-        if product.productlimit == 50000:
-            frame = rankinfo.objects.get(rankname="環保大師")
-        elif product.productlimit == 20000:
-            frame = rankinfo.objects.get(rankname="環保鑽石鬥士")
-        elif product.productlimit == 10000:
-            frame = rankinfo.objects.get(rankname="環保白金鬥士")
-        else:
-            frame = rankinfo.objects.get(rankname="環保黃金鬥士")
         return render(request, 'dailylife.html', locals())
     else:
         messages.error(request, "您還未登入！！")
@@ -109,23 +101,13 @@ def travel(request):
     if 'account' in request.session:
         account = request.session['account']
         pro = product.objects.filter(productkind="行")
-        if product.productlimit == 50000:
-            frame = rankinfo.objects.get(rankname="環保大師")
-        elif product.productlimit == 20000:
-            frame = rankinfo.objects.get(rankname="環保鑽石鬥士")
-        elif product.productlimit == 10000:
-            frame = rankinfo.objects.get(rankname="環保白金鬥士")
-        else:
-            frame = rankinfo.objects.get(rankname="環保黃金鬥士")
         return render(request, 'travel.html', locals())
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
 # 碳權點數商品
 def products(request):
-    if request.method == 'GET':
-        return render(request, 'shoppingmall.html')
-    elif request.method == 'POST':
+    if request.method == 'POST':
         if 'account' in request.session:
             account = request.session['account']
             mem = member.objects.get(account=account)
@@ -133,7 +115,7 @@ def products(request):
             products = product.objects.get(productID=productnum)
             if mem.GPOINT < products.productlimit:
                 messages.error(request, "您的段位未到達，請努力累積碳權點數")
-                return HttpResponseRedirect('/productlist/')
+                return redirect('/productlist/')
             else:
                 return render(request, 'commodity.html', locals())
         else:

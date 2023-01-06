@@ -45,17 +45,35 @@
         </div>
       </div>
     </nav>
-
     <input class="back" type ="button" onclick="history.back()" value="<返回"></input>
-
     <header>出門旅遊</header>
     {% for info in pro %}
     <div class="container">
-        <div class="item">
+      {% if info.productlimit == 50000 %}
+      <div class="item" style="background-color: #301656;">
+    {% endif %}
+    {% if info.productlimit == 20000 %}
+      <div class="item" style="background-color: #0997ef;">
+    {% endif %}
+    {% if info.productlimit == 10000 %}
+      <div class="item" style="background-color: #19f0de;">
+    {% endif %}
+    {% if info.productlimit == 0 %}
+      <div class="item" style="background-color: #ffecac;">
+    {% endif %}
             <div class="icon">
-                <div class="rank">
-                {% if info.productlimit == frame.rankpoint %}
-                  <img src="/static/img/{{ frame.rankimg }}">
+              <div class="rank">
+                {% if info.productlimit == 50000 %}
+                    <img src="{% static 'img/master.png' %}">
+                {% endif %}
+                {% if info.productlimit == 20000 %}
+                    <img src="{% static 'img/diamond.png' %}">
+                {% endif %}
+                {% if info.productlimit == 10000 %}
+                    <img src="{% static 'img/platinum.png' %}">
+                {% endif %}
+                {% if info.productlimit == 0 %}
+                    <img src="{% static 'img/gold.png' %}">
                 {% endif %}
                 </div>
             </div>
@@ -75,12 +93,6 @@
         </div>
     </div>
   {% endfor %}
-{% if messages %}
-  <script>
-  {% for msg in messages %}
-      alert('{{ msg.message }}');
-  {% endfor %}
-  </script>
-{% endif %}
+
 </body>
 </html>
