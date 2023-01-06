@@ -206,3 +206,11 @@ def ranklist(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
+# 對接頁面
+def service(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        return render(request, 'service.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')

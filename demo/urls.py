@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from myapp.views import signin, vip, signup, passbook, report, productlist, products
 from myapp.views import travel, signout, buy, qrcode, memberset, modify, ranklist ,daily
+from myapp.views import service
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,4 +36,5 @@ urlpatterns = [
     path('memberset/', memberset, name=""),
     path('modify/', modify, name=""),
     path('ranklist/', ranklist, name=""),
+    path('service/', service, name=""),
 ]
