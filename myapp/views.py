@@ -83,14 +83,48 @@ def productlist(request):
     if 'account' in request.session:
         account = request.session['account']
         products = product.objects.all()
-        return render(request, 'Redemption.html', locals())
+        return render(request, 'shoppingmall.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
+# 「食」頁面
+def daily(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        pro = product.objects.filter(productkind="食")
+        if product.productlimit == 50000:
+            frame = rankinfo.objects.get(rankname="環保大師")
+        elif product.productlimit == 20000:
+            frame = rankinfo.objects.get(rankname="環保鑽石鬥士")
+        elif product.productlimit == 10000:
+            frame = rankinfo.objects.get(rankname="環保白金鬥士")
+        else:
+            frame = rankinfo.objects.get(rankname="環保黃金鬥士")
+        return render(request, 'dailylife.html', locals())
+    else:
+        messages.error(request, "您還未登入！！")
+        return HttpResponseRedirect('/signin/')
+# 「行」頁面
+def travel(request):
+    if 'account' in request.session:
+        account = request.session['account']
+        pro = product.objects.filter(productkind="行")
+        if product.productlimit == 50000:
+            frame = rankinfo.objects.get(rankname="環保大師")
+        elif product.productlimit == 20000:
+            frame = rankinfo.objects.get(rankname="環保鑽石鬥士")
+        elif product.productlimit == 10000:
+            frame = rankinfo.objects.get(rankname="環保白金鬥士")
+        else:
+            frame = rankinfo.objects.get(rankname="環保黃金鬥士")
+        return render(request, 'travel.html', locals())
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
 # 碳權點數商品
 def products(request):
     if request.method == 'GET':
-        return render(request, 'Redemption.html')
+        return render(request, 'shoppingmall.html')
     elif request.method == 'POST':
         if 'account' in request.session:
             account = request.session['account']

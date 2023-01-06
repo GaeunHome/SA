@@ -39,6 +39,7 @@ class product(models.Model):
     productimage1 = models.CharField(max_length=50, null=False)
     productpoint = models.IntegerField()
     productlimit = models.IntegerField()
+    productkind = models.CharField(max_length=20)
     def __str__(self):
         return self.productname
 

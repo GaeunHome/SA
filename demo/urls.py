@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myapp.views import signin, vip, signup, passbook, report, productlist, products, signout, buy, qrcode, memberset, modify, ranklist
+from myapp.views import signin, vip, signup, passbook, report, productlist, products
+from myapp.views import travel, signout, buy, qrcode, memberset, modify, ranklist ,daily
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +26,8 @@ urlpatterns = [
     path('passbook/', passbook, name=""),
     path('question/', report, name=""),
     path('productlist/', productlist, name=""),
+    path('daily/', daily, name=""),
+    path('travel/', travel, name=""),
     path('products/', products, name=""),
     path('signout/', signout, name=""),
     path('buy/', buy, name=""),
