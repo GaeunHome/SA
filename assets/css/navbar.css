@@ -1,7 +1,18 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 .head{
     width: 250px;
     border-radius: 50%;
 }
 .navbar-brand img{
     width: 20px;
+}
+
+.back{
+    margin-top: 15px;
+    margin-left: 15px;
+    background: beige;
+    border: none;
+    font-weight: 600;
 }
