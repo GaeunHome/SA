@@ -145,12 +145,16 @@ def buy(request):
             pro = product.objects.get(productID=request.POST.get('pro'))
             info = member.objects.get(account=account)
             number = int(request.POST.get('number'))
+            if (info.GPOINT - pro.productpoint*number) < 0:
+                messages.error(request, "對不起！您的碳權點數不夠買該商品")
+                return HttpResponseRedirect('/productlist/')
             total = info.GPOINT - pro.productpoint*number
             member.objects.update(GPOINT=total)
             transaction.objects.create(
                 PROID=pro.productID, MEMO=pro.productname+"兌換", PRONAME=pro.productname,
                 MEMID=account, CDATE=timezone.now(), GPOINT=pro.productpoint*number, 
                 AMOUNT=0, TIME=number, BALANCE=total, APPID=10)
+            messages.success(request, "兌換成功！！")
             return HttpResponseRedirect('/productlist/')
     else:
         messages.error(request, "您還未登入！！")
@@ -160,7 +164,8 @@ def qrcode(request):
     if 'account' in request.session:
         account = request.session['account']
         qr = transaction.objects.filter(MEMID=account)
-        return render(request, 'qrcode.html', locals())
+        pro = product.objects.all()
+        return render(request, 'voucher.html', locals())
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')

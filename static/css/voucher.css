@@ -1,0 +1,59 @@
+header{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.voucherbox-set{
+    margin-top: 50px;
+}
+.voucherbox{
+    position: relative;
+    width: 80%;
+    height: 220px;
+    background: #CEFFCE;
+    border-radius: 20px;
+}
+
+.imgbox{
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 150px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.imgbox img{
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 100%;
+    height: 80%;
+}
+
+.content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.details{
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+.details h2{
+    font-size: 1.25em;
+    font-weight: 600;
+}
+.details h2 span{
+    font-size: 0.75em;
+    font-weight: 600;
+}
