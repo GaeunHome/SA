@@ -31,3 +31,33 @@ header{
 .buy_content .btn{
     margin-bottom: 15px;
 }
+.functionbox-set{
+    margin-top: 100px;
+}
+.functionbox{
+    margin-bottom: 20px;
+    position: relative;
+    width: 80%;
+    height: 50px;
+    background: #CEFFCE;
+    border-radius: 10px;
+}
+.function-content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.function-details{
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+}
+.function-details a{
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+}
