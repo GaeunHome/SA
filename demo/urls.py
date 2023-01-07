@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from myapp.views import signin, vip, signup, passbook, report, productlist, products
-from myapp.views import travel, signout, buy, qrcode, memberset, modify, ranklist ,daily
+from myapp.views import travel, signout, buy, qrcodes, memberset, modify, ranklist ,daily
 from myapp.views import service, login, register
 from rest_framework.routers import DefaultRouter
 from myapp import views
@@ -39,7 +39,7 @@ urlpatterns = [
     path('products/', products, name=""),
     path('signout/', signout, name=""),
     path('buy/', buy, name=""),
-    path('qrcode/', qrcode, name=""),
+    path('qrcode/', qrcodes, name=""),
     path('memberset/', memberset, name=""),
     path('modify/', modify, name=""),
     path('ranklist/', ranklist, name=""),

@@ -167,7 +167,7 @@ def buy(request):
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
 # 兌換條碼
-def qrcode(request):
+def qrcodes(request):
     if 'account' in request.session:
         account = request.session['account']
         qr = transaction.objects.filter(MEMID=account)
