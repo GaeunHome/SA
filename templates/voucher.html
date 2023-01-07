@@ -63,11 +63,32 @@
                 <div class="details">
                     <h2>{{ info.PRONAME }}使用券</h2>
                     <span>使用時間：{{ info.TIME }}小時</span><br>
-                    <input style="margin: 0; padding: 5px;" class="btn btn-success" type="button" value="立即使用">
+                    <input id="QR" style="margin: 0; padding: 5px;" class="btn btn-success" type="button" value="立即使用">
                 </div>
             </div>
         </div>
+        <dialog id="QR_show">
+          <h3>請將此條碼掃描</h3>
+          <br>
+          <div class="container">
+            <input type="button" value="完成" id="close" class="btn_dialog btn btn-lg btn-secondary">
+          </div>
+        </dialog>
     </div>
     {% endfor %}
+    <script>
+      /**彈窗**/
+      let btn=document.querySelector("#QR");
+      let QR_show=document.querySelector("#QR_show");
+      btn.addEventListener("click", function(){
+        QR_show.showModal();
+      })
+  
+      /**關閉**/
+      let close=document.querySelector("#close");
+      close.addEventListener("click", function(){
+        QR_show.close();
+      })
+    </script>
 </body>
 </html>
