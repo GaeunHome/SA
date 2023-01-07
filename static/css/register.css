@@ -1,0 +1,72 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+header{
+    margin-top: 60px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.box-set{
+    margin-top: 100px;
+}
+.loginbox{
+    position: relative;
+    width: 70%;
+    height: 200px;
+    background: #CEFFCE;
+    border-radius: 20px;
+}
+.loginbox2{
+    position: relative;
+    width: 70%;
+    height: 200px;
+    background: #c4f9ff;
+    border-radius: 20px;
+}
+
+.imgbox{
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 130px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+.imgbox img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.details{
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+}
+.details h2{
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+.slogin{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
