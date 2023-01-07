@@ -1,5 +1,5 @@
 header{
-    margin-top: 10px;
+    margin-top: 50px;
     text-align: center;
     font-size: 48px;
     font-weight: bolder;
@@ -8,6 +8,7 @@ header{
 .choose{
     color: #222;
     text-align: center;
+    margin-top: 40px;
 }
 .choose a{
     position: relative;

@@ -53,9 +53,9 @@
     <div align="center" class="voucherbox-set">
         <div class="voucherbox">
             <div class="imgbox">
-                {% for pr in pro %}
-                    {% if info.PROID == pr.productID %}
-                    <img src="/static/img/{{ pr.productimage1 }}">
+                {% for product in pro %}
+                    {% if product.productname == info.PRONAME %}
+                    <img src="/static/img/{{ product.productimage1 }}">
                     {% endif %}
                 {% endfor %}
             </div>
