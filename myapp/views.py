@@ -1,9 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.utils import timezone
 from myapp.models import member, question, transaction, product, rankinfo
 from django.core.exceptions import ObjectDoesNotExist
+from myapp.serializers import myappSerializer
+from rest_framework import viewsets
+
 
 # Create your views here.
 # 登入已完成優化 # 會員編號尚未完成
@@ -219,3 +222,7 @@ def service(request):
     else:
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
+# 對接測試
+class myappViewSet(viewsets.ModelViewSet):
+    queryset = transaction.objects.all()
+    serializer_class = myappSerializer

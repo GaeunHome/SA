@@ -32,6 +32,8 @@ class transaction(models.Model):
     APPID = models.IntegerField() # 智慧喜組別
     def __str__(self):
         return self.MEMID
+    class Meta:
+        db_table = "transaction"
 
 class product(models.Model):
     productID = models.AutoField(primary_key=True)
