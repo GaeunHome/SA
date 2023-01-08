@@ -7,8 +7,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from myapp.serializers import myappSerializer
 from rest_framework import viewsets
 
-
 # Create your views here.
+
+def login(request):
+    return render(request, 'login.html')
+def register(request):
+    return render(request, 'register.html')
 # 登入已完成優化 # 會員編號尚未完成
 def signin(request):
     if request.method == 'GET':
@@ -163,7 +167,7 @@ def buy(request):
         messages.error(request, "您還未登入！！")
         return HttpResponseRedirect('/signin/')
 # 兌換條碼
-def qrcode(request):
+def qrcodes(request):
     if 'account' in request.session:
         account = request.session['account']
         qr = transaction.objects.filter(MEMID=account)
